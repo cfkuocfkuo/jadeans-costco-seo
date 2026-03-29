@@ -290,12 +290,12 @@ tr:hover td { background: rgba(26,111,255,.04); }
 
   <div class="controls">
     <input class="search" id="search" type="text" placeholder="搜尋域名或TLD..." oninput="filterTable()">
-    <button class="filter-btn active" onclick="filterKW('all', this)">全部</button>
-    <button class="filter-btn" onclick="filterKW('costco', this)">costco</button>
+    <button class="filter-btn active" onclick="filterKW('costco', this)">costco</button>
     <button class="filter-btn" onclick="filterKW('中油', this)">中油</button>
     <button class="filter-btn" onclick="filterKW('國中', this)">國中</button>
     <button class="filter-btn" onclick="filterKW('英明國中', this)">英明國中</button>
     <button class="filter-btn" onclick="filterKW('英明國中他在動', this)">英明國中他在動</button>
+    <button class="filter-btn" onclick="filterKW('盧勝彥', this)">盧勝彥</button>
     <div class="spacer"></div>
     <span class="sort-info" id="sort-info">顯示 87 筆 ｜ 合計 14,776,300 頁</span>
   </div>
@@ -550,7 +550,7 @@ const DOMAINS = [
   [87,"yricum.art",".art","2026-03-27 18:41","Sav.com, LLC",118000,"英明國中他在動密碼"]
 ];
 
-let currentFilter = 'all';
+let currentFilter = 'costco';
 let sortCol = -1, sortAsc = true;
 
 function tldClass(tld) {
