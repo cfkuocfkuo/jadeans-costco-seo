@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costco好市多 SEO污染攻擊監控報告｜36個惡意域名（2026年3月）</title>
+<style>
+  body { font-family: '標楷體', 'Noto Serif TC', serif; background: #f8f9fa; color: #222; margin: 0; padding: 0; }
+  .wrapper { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  /* 頁首 */
+  .report-header { background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #c62828 100%);
+    color: #fff; padding: 32px 28px; border-radius: 10px; margin-bottom: 24px; }
+  .report-header h1 { margin: 0 0 10px; font-size: 1.5em; line-height: 1.4; }
+  .report-header .meta { font-size: 0.88em; opacity: 0.85; }
+  .badge { display: inline-block; background: #c62828; color: #fff;
+    padding: 3px 10px; border-radius: 12px; font-size: 0.8em; margin-left: 8px; }
+
+  /* 統計卡片 */
+  .stats-grid { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .stat-card { flex: 1; min-width: 180px; background: #fff; border-radius: 8px;
+    padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid #1a237e; }
+  .stat-card.red { border-top-color: #c62828; }
+  .stat-card.green { border-top-color: #2e7d32; }
+  .stat-card .label { font-size: 0.82em; color: #666; margin-bottom: 6px; }
+  .stat-card .value { font-size: 1.6em; font-weight: bold; color: #1a237e; }
+  .stat-card.red .value { color: #c62828; }
+  .stat-card.green .value { color: #2e7d32; }
+
+  /* 截圖說明框 */
+  .evidence-box { background: #fff8e1; border-left: 5px solid #f57f17;
+    padding: 16px 20px; border-radius: 6px; margin-bottom: 24px; }
+  .evidence-box h3 { margin: 0 0 10px; color: #e65100; font-size: 1em; }
+  .evidence-box p { margin: 4px 0; font-size: 0.9em; line-height: 1.7; }
+
+  /* 表格 */
+  .table-wrap { overflow-x: auto; background: #fff; border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  thead tr { background: #1a237e; color: #fff; }
+  thead th { padding: 10px 12px; text-align: center; font-weight: bold; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #f3f4f8; }
+  tbody tr:hover { background: #e8eaf6; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e8eaf0; vertical-align: middle; }
+  td.domain { font-family: monospace; color: #1565c0; font-weight: bold; font-size: 0.95em; }
+  td.num { text-align: right; font-family: monospace; }
+  td.diff { text-align: right; font-family: monospace; font-weight: bold; }
+  td.link a { color: #1565c0; font-size: 0.78em; word-break: break-all; }
+  tfoot tr { background: #c62828; color: #fff; font-weight: bold; }
+  tfoot td { padding: 10px 12px; }
+
+  /* 分析說明 */
+  .analysis { background: #fff; border-radius: 8px; padding: 20px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 24px; }
+  .analysis h2 { color: #1a237e; font-size: 1.1em; border-bottom: 2px solid #1a237e;
+    padding-bottom: 6px; margin-top: 0; }
+  .analysis ul { margin: 8px 0; padding-left: 1.4em; }
+  .analysis li { margin: 6px 0; line-height: 1.7; font-size: 0.92em; }
+  .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+
+  /* 頁尾 */
+  .footer { text-align: center; font-size: 0.8em; color: #888; padding: 16px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- 頁首 -->
+  <div class="report-header">
+    <h1>🔍 Costco好市多 SEO污染攻擊監控報告
+      <span class="badge">2026年3月</span>
+    </h1>
+    <div class="meta">
+      搜證單位：翡翠網路資訊解決方案（Jade-Ans）｜
+      報告日期：2026年3月9日｜
+      監控域名數：36個｜
+      關鍵字：<strong>costco / 好市多</strong>
+    </div>
+  </div>
+
+  <!-- 統計卡片 -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">監控惡意域名數</div>
+      <div class="value">36 個</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">3/7 Costco污染頁面總數</div>
+      <div class="value">5,048,800</div>
+    </div>
+    <div class="stat-card red">
+      <div class="label">3/9 Costco污染頁面總數</div>
+      <div class="value">4,305,800</div>
+    </div>
+    <div class="stat-card green">
+      <div class="label">2天內變化</div>
+      <div class="value">-743,000</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">域名建立日期</div>
+      <div class="value">2026/3/2–3/4</div>
+    </div>
+  </div>
+
+  <!-- 截圖說明框 -->
+  <div class="evidence-box">
+    <h3>📸 實證截圖說明｜cwmqzu.courses 搜尋「costco」結果（2026-03-09 09:15）</h3>
+    <p>▶ 搜尋指令：<code>site:cwmqzu.courses costco</code></p>
+    <p>▶ 結果頁面標題出現：「<strong>好市多惠而浦微波爐評價</strong>」、「<strong>加賀屋行李箱 好市多Costco30吋行李箱2749元</strong>」、「<strong>好市多簡易接單流程</strong>」</p>
+    <p>▶ 此為典型SEO寄生攻擊：惡意域名在頁面植入大量「好市多」「Costco」等關鍵字，劫持消費者搜尋流量，
+    導向釣魚頁面或詐騙內容。</p>
+    <p>▶ 36個惡意域名均於 <strong>2026年3月2日至4日</strong> 集中註冊（Spaceship / Dynadot / GoDaddy），
+    共用相同廣告帳號 <span class="highlight">AdSense pub-2647689032095179</span>，指向同一行為人。</p>
+  </div>
+
+  <!-- 資料表格 -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>惡意域名</th>
+          <th>建立時間(TW)</th>
+          <th>域名商</th>
+          <th>污染頁數(3/7)</th>
+          <th>污染頁數(3/9)</th>
+          <th>2天變化</th>
+          <th>Costco SEO污染搜尋連結</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td class="domain">uahxxl.company</td>
+          <td>2026-03-02 00:00</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">157,000</td>
+          <td class="num" style="background:#e8f5e9">130,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -27,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:uahxxl.company+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td class="domain">gxphnt.buzz</td>
+          <td>2026-03-02 11:14:17</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">26,300</td>
+          <td class="num" style="background:#e8f5e9">22,300</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -4,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:gxphnt.buzz+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td class="domain">expmgc.pics</td>
+          <td>2026-03-02 11:14:18</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">21,900</td>
+          <td class="num" style="background:#e8f5e9">17,300</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -4,600</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:expmgc.pics+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">4</td>
+          <td class="domain">fvcjvi.makeup</td>
+          <td>2026-03-02 11:14:18</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">43,000</td>
+          <td class="num" style="background:#e8f5e9">31,900</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -11,100</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:fvcjvi.makeup+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">5</td>
+          <td class="domain">gtbzno.bond</td>
+          <td>2026-03-02 11:14:18</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">37,700</td>
+          <td class="num" style="background:#e8f5e9">27,500</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -10,200</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:gtbzno.bond+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">6</td>
+          <td class="domain">hosbwq.beauty</td>
+          <td>2026-03-02 11:14:18</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">40,700</td>
+          <td class="num" style="background:#e8f5e9">32,700</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -8,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:hosbwq.beauty+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">7</td>
+          <td class="domain">svydoh.cyou</td>
+          <td>2026-03-02 11:14:18</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">45,200</td>
+          <td class="num" style="background:#e8f5e9">36,500</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -8,700</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:svydoh.cyou+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">8</td>
+          <td class="domain">uatvnx.boats</td>
+          <td>2026-03-02 11:14:18</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">43,000</td>
+          <td class="num" style="background:#e8f5e9">34,300</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -8,700</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:uatvnx.boats+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">9</td>
+          <td class="domain">enadvd.qpon</td>
+          <td>2026-03-02 12:41:12</td>
+          <td>Dynadot LLC</td>
+          <td class="num">140,000</td>
+          <td class="num" style="background:#e8f5e9">119,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -21,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:enadvd.qpon+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">10</td>
+          <td class="domain">pnlenm.horse</td>
+          <td>2026-03-02 12:41:12</td>
+          <td>DYNADOT LLC</td>
+          <td class="num">166,000</td>
+          <td class="num" style="background:#e8f5e9">155,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -11,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:pnlenm.horse+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">11</td>
+          <td class="domain">tjrwua.best</td>
+          <td>2026-03-02 12:41:12</td>
+          <td>Dynadot LLC</td>
+          <td class="num">162,000</td>
+          <td class="num" style="background:#e8f5e9">146,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -16,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:tjrwua.best+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">12</td>
+          <td class="domain">pacuav.cards</td>
+          <td>2026-03-02 12:42:04</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">139,000</td>
+          <td class="num" style="background:#e8f5e9">110,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -29,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:pacuav.cards+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">13</td>
+          <td class="domain">furmxd.cafe</td>
+          <td>2026-03-02 12:42:05</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">157,000</td>
+          <td class="num" style="background:#e8f5e9">130,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -27,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:furmxd.cafe+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">14</td>
+          <td class="domain">ufzgce.republican</td>
+          <td>2026-03-02 12:42:05</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">157,000</td>
+          <td class="num" style="background:#e8f5e9">123,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -34,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:ufzgce.republican+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">15</td>
+          <td class="domain">mvjfmi.guru</td>
+          <td>2026-03-02 12:42:06</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">157,000</td>
+          <td class="num" style="background:#e8f5e9">139,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -18,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:mvjfmi.guru+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">16</td>
+          <td class="domain">ynwahh.digital</td>
+          <td>2026-03-02 12:42:07</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">162,000</td>
+          <td class="num" style="background:#e8f5e9">137,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -25,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:ynwahh.digital+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">17</td>
+          <td class="domain">cxkdvs.link</td>
+          <td>2026-03-02 12:43:15</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">152,000</td>
+          <td class="num" style="background:#e8f5e9">127,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -25,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:cxkdvs.link+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">18</td>
+          <td class="domain">ubcyao.tattoo</td>
+          <td>2026-03-02 12:43:15</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">132,000</td>
+          <td class="num" style="background:#e8f5e9">112,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -20,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:ubcyao.tattoo+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">19</td>
+          <td class="domain">vzphnx.run</td>
+          <td>2026-03-02 12:43:15</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">152,000</td>
+          <td class="num" style="background:#e8f5e9">126,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -26,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:vzphnx.run+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">20</td>
+          <td class="domain">cwmqzu.courses</td>
+          <td>2026-03-02 12:43:16</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">158,000</td>
+          <td class="num" style="background:#e8f5e9">128,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -30,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:cwmqzu.courses+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">21</td>
+          <td class="domain">fbiavv.cc</td>
+          <td>2026-03-02 12:43:16</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">129,000</td>
+          <td class="num" style="background:#e8f5e9">88,300</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -40,700</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:fbiavv.cc+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">22</td>
+          <td class="domain">gqbicp.study</td>
+          <td>2026-03-02 12:43:16</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">147,000</td>
+          <td class="num" style="background:#e8f5e9">115,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -32,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:gqbicp.study+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">23</td>
+          <td class="domain">wyeyrt.asia</td>
+          <td>2026-03-02 12:43:16</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">142,000</td>
+          <td class="num" style="background:#e8f5e9">114,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -28,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:wyeyrt.asia+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">24</td>
+          <td class="domain">xdbthq.date</td>
+          <td>2026-03-02 12:43:16</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">153,000</td>
+          <td class="num" style="background:#e8f5e9">151,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -2,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:xdbthq.date+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">25</td>
+          <td class="domain">tprumc.garden</td>
+          <td>2026-03-02 12:43:20</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">149,000</td>
+          <td class="num" style="background:#e8f5e9">120,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -29,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:tprumc.garden+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">26</td>
+          <td class="domain">hggscp.bar</td>
+          <td>2026-03-02 12:43:46</td>
+          <td>GoDaddy</td>
+          <td class="num">149,000</td>
+          <td class="num" style="background:#e8f5e9">127,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -22,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:hggscp.bar+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">27</td>
+          <td class="domain">ojiykt.shop</td>
+          <td>2026-03-04 00:00</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">191,000</td>
+          <td class="num" style="background:#e8f5e9">131,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -60,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:ojiykt.shop+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">28</td>
+          <td class="domain">tgszsg.beer</td>
+          <td>2026-03-04 19:15:58</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">194,000</td>
+          <td class="num" style="background:#e8f5e9">179,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -15,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:tgszsg.beer+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">29</td>
+          <td class="domain">zdqjec.wtf</td>
+          <td>2026-03-04 19:15:58</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">193,000</td>
+          <td class="num" style="background:#e8f5e9">173,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -20,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:zdqjec.wtf+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">30</td>
+          <td class="domain">fszdik.gay</td>
+          <td>2026-03-04 19:15:59</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">203,000</td>
+          <td class="num" style="background:#e8f5e9">147,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -56,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:fszdik.gay+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">31</td>
+          <td class="domain">xiploh.courses</td>
+          <td>2026-03-04 19:15:59</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">197,000</td>
+          <td class="num" style="background:#e8f5e9">171,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -26,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:xiploh.courses+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">32</td>
+          <td class="domain">puenko.boutique</td>
+          <td>2026-03-04 19:16:04</td>
+          <td>Spaceship, Inc.</td>
+          <td class="num">195,000</td>
+          <td class="num" style="background:#e8f5e9">164,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -31,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:puenko.boutique+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">33</td>
+          <td class="domain">uitrsh.reviews</td>
+          <td>2026-03-04 19:17:26</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">188,000</td>
+          <td class="num" style="background:#e8f5e9">176,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -12,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:uitrsh.reviews+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">34</td>
+          <td class="domain">ukxlwb.dog</td>
+          <td>2026-03-04 19:17:26</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">196,000</td>
+          <td class="num" style="background:#e8f5e9">193,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -3,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:ukxlwb.dog+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">35</td>
+          <td class="domain">ntwpye.sale</td>
+          <td>2026-03-04 19:17:40</td>
+          <td>Sav.com, LLC</td>
+          <td class="num">185,000</td>
+          <td class="num" style="background:#e8f5e9">181,000</td>
+          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -4,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:ntwpye.sale+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+        <tr>
+          <td class="num">36</td>
+          <td class="domain">gakhcf.horse</td>
+          <td>2026-03-04 19:17:45</td>
+          <td>DYNADOT LLC</td>
+          <td class="num">189,000</td>
+          <td class="num" style="background:#fff0f0">191,000</td>
+          <td class="diff" style="color:#b71c1c;background:#fff0f0">▲ +2,000</td>
+          <td class="link"><a href="https://www.google.com/search?q=site:gakhcf.horse+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" style="text-align:right">36個域名總計</td>
+          <td class="num">5,048,800</td>
+          <td class="num">4,305,800</td>
+          <td class="num">-743,000（-14.7%）</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- 分析說明 -->
+  <div class="analysis">
+    <h2>📌 分析說明</h2>
+    <ul>
+      <li><strong>SEO寄生攻擊（Parasite SEO）</strong>：惡意域名在頁面大量植入「Costco」「好市多」等高搜尋量關鍵字，
+      藉此出現在Google搜尋結果，劫持消費者流量導向釣魚或詐騙頁面。</li>
+      <li><strong>集中建立時間</strong>：36個域名均於 2026年3月2日–4日 批量建立，為典型自動化攻擊特徵。</li>
+      <li><strong>共用廣告帳號</strong>：所有域名使用相同 AdSense pub-2647689032095179 及 GTM-TRLQMPKX，
+      鑑識確認為<span class="highlight">同一行為人</span>操作。</li>
+      <li><strong>3/7→3/9 頁數下降 -743,000（-14.7%）</strong>：推測Google已啟動部分清除，
+      但仍有 <strong>4,305,800 頁</strong> 殘留，對Costco品牌威脅持續存在。</li>
+      <li><strong>犯罪事實</strong>：行為人已於司法文書中確認身分，
+      另涉兒少剝削性影像案地檢署偵辦中）。</li>
+    </ul>
+  </div>
+
+  <!-- 頁尾 -->
+  <div class="footer">
+    本報告由 翡翠網路資訊解決方案（Jade-Ans Internet Information Solutions）製作｜
+    公開報告：<a href="https://seo-report-2021.netlify.app/" target="_blank">seo-report-2021.netlify.app</a>｜
+    2026年3月9日
+  </div>
+
+</div>
+</body>
+</html>
