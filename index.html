@@ -569,10 +569,10 @@ function wpClass(v) {
 
 function renderTable() {
   const q = document.getElementById('search').value.toLowerCase();
+  // 永遠顯示全部87個域名，關鍵字按鈕只影響右欄Google連結
   let rows = DOMAINS.filter(r => {
-    const matchFilter = currentFilter === 'all' || (r[6]||'').includes(currentFilter);
     const matchSearch = !q || r[1].includes(q) || r[2].includes(q);
-    return matchFilter && matchSearch;
+    return matchSearch;
   });
   if (sortCol >= 0) {
     rows.sort((a,b) => {
