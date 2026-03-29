@@ -3,528 +3,659 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Costco好市多 SEO污染攻擊監控報告｜36個惡意域名（2026年3月）</title>
+<title>SEO污染攻擊鑑識報告 | Jade-Ans 2026-03-28</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: '標楷體', 'Noto Serif TC', serif; background: #f8f9fa; color: #222; margin: 0; padding: 0; }
-  .wrapper { max-width: 1100px; margin: 0 auto; padding: 20px; }
+:root {
+  --bg: #6b6b6b;
+  --bg2: #ececec;
+  --bg3: #f0f0f0;
+  --border: #d8d8d8;
+  --border2: #d0d0d0;
+  --accent: #1a6fff;
+  --accent2: #0d4fd4;
+  --red: #e03c3c;
+  --red2: #ff6b6b;
+  --amber: #f0a500;
+  --green: #1db86a;
+  --text: #1a1a1a;
+  --text2: #3a3a3a;
+  --text3: #606060;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Noto Sans TC', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 14px; line-height: 1.6; }
 
-  /* 頁首 */
-  .report-header { background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #c62828 100%);
-    color: #fff; padding: 32px 28px; border-radius: 10px; margin-bottom: 24px; }
-  .report-header h1 { margin: 0 0 10px; font-size: 1.5em; line-height: 1.4; }
-  .report-header .meta { font-size: 0.88em; opacity: 0.85; }
-  .badge { display: inline-block; background: #c62828; color: #fff;
-    padding: 3px 10px; border-radius: 12px; font-size: 0.8em; margin-left: 8px; }
+/* ── HEADER ── */
+.header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex; align-items: stretch; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.header-left { display: flex; align-items: center; gap: 16px; padding: 16px 0; }
+.logo { width: 36px; height: 36px; background: var(--accent); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-weight: 600; font-size: 13px; color: #fff; letter-spacing: -1px; }
+.header-title { font-size: 13px; font-weight: 500; color: var(--text); }
+.header-sub { font-size: 11px; color: var(--text2); font-family: var(--mono); }
+.header-tabs { display: flex; align-items: stretch; gap: 0; }
+.tab { padding: 0 20px; font-size: 12px; font-weight: 500; color: var(--text2);
+  border-bottom: 2px solid transparent; cursor: pointer; display: flex; align-items: center;
+  transition: all .2s; border-top: none; border-left: none; border-right: none;
+  background: none; font-family: var(--sans); }
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.header-badge { background: var(--red); color: #fff; font-size: 10px; font-family: var(--mono);
+  padding: 2px 6px; border-radius: 3px; margin-left: 6px; font-weight: 600; }
 
-  /* 統計卡片 */
-  .stats-grid { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .stat-card { flex: 1; min-width: 180px; background: #fff; border-radius: 8px;
-    padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid #1a237e; }
-  .stat-card.red { border-top-color: #c62828; }
-  .stat-card.green { border-top-color: #2e7d32; }
-  .stat-card .label { font-size: 0.82em; color: #666; margin-bottom: 6px; }
-  .stat-card .value { font-size: 1.6em; font-weight: bold; color: #1a237e; }
-  .stat-card.red .value { color: #c62828; }
-  .stat-card.green .value { color: #2e7d32; }
+/* ── PANELS ── */
+.panel { display: none; padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
+.panel.active { display: block; }
 
-  /* 截圖說明框 */
-  .evidence-box { background: #fff8e1; border-left: 5px solid #f57f17;
-    padding: 16px 20px; border-radius: 6px; margin-bottom: 24px; }
-  .evidence-box h3 { margin: 0 0 10px; color: #e65100; font-size: 1em; }
-  .evidence-box p { margin: 4px 0; font-size: 0.9em; line-height: 1.7; }
+/* ── STAT CARDS ── */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+.stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; }
+.stat-label { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; font-family: var(--mono); margin-bottom: 8px; }
+.stat-value { font-size: 28px; font-weight: 700; font-family: var(--mono); color: var(--text); line-height: 1; }
+.stat-value.red { color: var(--red2); }
+.stat-value.amber { color: var(--amber); }
+.stat-value.green { color: var(--green); }
+.stat-value.blue { color: var(--accent); }
+.stat-sub { font-size: 11px; color: var(--text3); margin-top: 6px; font-family: var(--mono); }
 
-  /* 表格 */
-  .table-wrap { overflow-x: auto; background: #fff; border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 24px; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
-  thead tr { background: #1a237e; color: #fff; }
-  thead th { padding: 10px 12px; text-align: center; font-weight: bold; white-space: nowrap; }
-  tbody tr:nth-child(even) { background: #f3f4f8; }
-  tbody tr:hover { background: #e8eaf6; }
-  td { padding: 8px 12px; border-bottom: 1px solid #e8eaf0; vertical-align: middle; }
-  td.domain { font-family: monospace; color: #1565c0; font-weight: bold; font-size: 0.95em; }
-  td.num { text-align: right; font-family: monospace; }
-  td.diff { text-align: right; font-family: monospace; font-weight: bold; }
-  td.link a { color: #1565c0; font-size: 0.78em; word-break: break-all; }
-  tfoot tr { background: #c62828; color: #fff; font-weight: bold; }
-  tfoot td { padding: 10px 12px; }
+/* ── SECTION ── */
+.section { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; }
+.section-header { padding: 14px 20px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; }
+.section-title { font-size: 12px; font-weight: 600; color: var(--text2); text-transform: uppercase;
+  letter-spacing: 1.5px; font-family: var(--mono); }
+.section-count { font-size: 11px; color: var(--text3); font-family: var(--mono); }
 
-  /* 分析說明 */
-  .analysis { background: #fff; border-radius: 8px; padding: 20px 24px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 24px; }
-  .analysis h2 { color: #1a237e; font-size: 1.1em; border-bottom: 2px solid #1a237e;
-    padding-bottom: 6px; margin-top: 0; }
-  .analysis ul { margin: 8px 0; padding-left: 1.4em; }
-  .analysis li { margin: 6px 0; line-height: 1.7; font-size: 0.92em; }
-  .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+/* ── TABLE ── */
+.tbl-wrap { overflow-x: auto; min-width: 0; }
+table { width: 100%; border-collapse: collapse; min-width: 820px; }
+th { padding: 10px 14px; text-align: left; font-size: 10px; font-weight: 600; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 1px; font-family: var(--mono);
+  border-bottom: 1px solid var(--border); background: var(--bg3); white-space: nowrap; }
+th.r { text-align: right; }
+td { padding: 9px 14px; font-size: 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(26,111,255,.04); }
+.td-no { font-family: var(--mono); color: var(--text3); font-size: 11px; }
+.td-domain { font-family: var(--mono); font-size: 12px; color: var(--text); font-weight: 500; }
+.td-tld { font-family: var(--mono); font-size: 11px; }
+.td-tw { font-family: var(--mono); font-size: 11px; color: var(--text2); }
+.td-reg { font-size: 11px; color: var(--text2); }
+.td-wp { font-family: var(--mono); font-size: 12px; text-align: right; font-weight: 500; }
+.td-wp.hi { color: var(--red2); }
+.td-wp.mid { color: var(--amber); }
+.td-wp.lo { color: var(--text); }
+.tbl-total td { background: var(--bg3); font-weight: 700; font-family: var(--mono); color: var(--amber); border-top: 1px solid var(--border2); }
 
-  /* 頁尾 */
-  .footer { text-align: center; font-size: 0.8em; color: #888; padding: 16px; }
+/* TLD badge */
+.tld-badge { display: inline-block; padding: 1px 7px; border-radius: 3px; font-size: 10px;
+  font-family: var(--mono); font-weight: 600; }
+.tld-cards   { background: rgba(26,111,255,.15); color: #5b9fff; }
+.tld-garden  { background: rgba(29,184,106,.15); color: #1db86a; }
+.tld-cam     { background: rgba(240,165,0,.15);  color: #f0a500; }
+.tld-study   { background: rgba(142,100,255,.15); color: #a07fff; }
+.tld-watch   { background: rgba(224,60,60,.15);  color: #ff7070; }
+.tld-boutique{ background: rgba(255,130,80,.15); color: #ff9060; }
+.tld-today   { background: rgba(0,200,220,.15);  color: #00c8dc; }
+.tld-beer    { background: rgba(200,160,80,.15); color: #c8a050; }
+.tld-onl     { background: rgba(180,80,255,.15); color: #c060ff; }
+.tld-tattoo  { background: rgba(255,80,180,.15); color: #ff60c0; }
+.tld-casa    { background: rgba(80,200,150,.15); color: #50c896; }
+.tld-info    { background: rgba(100,180,255,.15); color: #64b4ff; }
+.tld-bar     { background: rgba(255,160,50,.15); color: #ffa032; }
+.tld-surf    { background: rgba(50,200,255,.15); color: #32c8ff; }
+.tld-company { background: rgba(255,200,50,.15); color: #ffc832; }
+.tld-other   { background: rgba(120,120,120,.15); color: #909090; }
+
+/* ── CONTROLS ── */
+.controls { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.search { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px;
+  padding: 8px 14px; color: var(--text); font-family: var(--mono); font-size: 12px;
+  width: 260px; outline: none; }
+.search:focus { border-color: var(--accent); }
+.search::placeholder { color: var(--text3); }
+.filter-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px;
+  padding: 7px 14px; color: var(--text2); font-size: 11px; font-family: var(--mono);
+  cursor: pointer; transition: all .15s; }
+.filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.spacer { flex: 1; }
+.sort-info { font-size: 11px; color: var(--text3); font-family: var(--mono); }
+
+/* ── TLD CHART ── */
+.tld-chart { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; padding: 16px 20px; }
+.tld-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.tld-bar-wrap { width: 100%; height: 60px; display: flex; align-items: flex-end; }
+.tld-bar-fill { width: 100%; border-radius: 3px 3px 0 0; min-height: 4px; transition: height .3s; }
+.tld-item-name { font-size: 10px; font-family: var(--mono); color: var(--text2); }
+.tld-item-val { font-size: 11px; font-family: var(--mono); font-weight: 600; color: var(--text); }
+
+/* ── TIMELINE ── */
+.timeline { padding: 20px; }
+.tl-group { margin-bottom: 24px; }
+.tl-date { font-size: 11px; font-family: var(--mono); color: var(--accent); font-weight: 600;
+  margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.tl-dots { display: flex; flex-wrap: wrap; gap: 6px; }
+.tl-dot { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border-radius: 4px;
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text2);
+  white-space: nowrap; }
+
+/* ── REPORT PANEL ── */
+.report-header { background: linear-gradient(135deg, #e4e4e4 0%, #dcdcdc 100%);
+  border: 1px solid #c0c0c0; border-radius: 10px; padding: 32px 36px; margin-bottom: 24px; }
+.report-badge { display: inline-block; background: var(--red); color: #fff; font-size: 10px;
+  font-family: var(--mono); padding: 3px 10px; border-radius: 3px; font-weight: 700;
+  margin-bottom: 14px; letter-spacing: 1px; }
+.report-title { font-size: 22px; font-weight: 700; color: #e87020; margin-bottom: 6px; line-height: 1.3; }
+.report-sub { font-size: 13px; color: var(--text2); margin-bottom: 20px; }
+.report-meta { display: flex; gap: 32px; }
+.meta-item { display: flex; flex-direction: column; gap: 3px; }
+.meta-label { font-size: 10px; color: var(--text3); font-family: var(--mono); text-transform: uppercase; letter-spacing: 1px; }
+.meta-value { font-size: 12px; color: var(--text); font-family: var(--mono); }
+
+.finding { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  margin-bottom: 16px; overflow: hidden; }
+.finding-hdr { padding: 14px 20px; background: var(--bg3); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px; }
+.finding-num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff; font-family: var(--mono); flex-shrink: 0; }
+.finding-num.red { background: var(--red); }
+.finding-num.amber { background: var(--amber); color: #000; }
+.finding-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.finding-body { padding: 16px 20px; }
+.finding-body p { color: var(--text2); font-size: 13px; margin-bottom: 10px; line-height: 1.7; }
+.finding-body p:last-child { margin-bottom: 0; }
+.code { background: var(--bg3); border: 1px solid var(--border); border-radius: 5px;
+  padding: 10px 14px; font-family: var(--mono); font-size: 11px; color: var(--amber);
+  margin: 10px 0; word-break: break-all; }
+.highlight { color: var(--red2); font-weight: 600; }
+.highlight2 { color: var(--amber); font-weight: 600; }
+.highlight3 { color: var(--green); font-weight: 600; }
+
+.evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.evidence-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px;
+  padding: 12px 14px; }
+.evidence-label { font-size: 10px; color: var(--text3); font-family: var(--mono);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.evidence-value { font-size: 12px; color: var(--text); font-family: var(--mono); word-break: break-all; }
+.evidence-value.red { color: var(--red2); }
+.evidence-value.amber { color: var(--amber); }
+
+.verdict { background: rgba(255,255,255,.55); border: 1px solid rgba(150,150,150,.35);
+  border-radius: 8px; padding: 18px 20px; margin-top: 20px; }
+.verdict-label { font-size: 15px; color: #c00000; font-family: var(--mono);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600; }
+.verdict-text { font-size: 17px; color: var(--text); line-height: 1.8; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .tld-chart { grid-template-columns: repeat(3, 1fr); }
+  .evidence-grid { grid-template-columns: 1fr; }
+  .report-meta { flex-wrap: wrap; gap: 16px; }
+  .panel { padding: 20px 16px; }
+}
 </style>
 </head>
 <body>
-<div class="wrapper">
 
-  <!-- 頁首 -->
-  <div class="report-header">
-    <h1>🔍 Costco好市多 SEO污染攻擊監控報告
-      <span class="badge">2026年3月</span>
-    </h1>
-    <div class="meta">
-      搜證單位：翡翠網路資訊解決方案（Jade-Ans）｜
-      報告日期：2026年3月9日｜
-      監控域名數：36個｜
-      關鍵字：<strong>costco / 好市多</strong>
+<div class="header">
+  <div class="header-left">
+    <div class="logo">JA</div>
+    <div>
+      <div class="header-title">Jade-Ans 威脅情報平台</div>
+      <div class="header-sub">SEO污染攻擊監控 ｜ 案件：111偵字第8075號</div>
     </div>
   </div>
+  <div class="header-tabs">
+    <button class="tab active" onclick="switchTab('dashboard')">監控儀表板</button>
+    <button class="tab" onclick="switchTab('domains')">域名清單 <span class="header-badge">87</span></button>
+    <button class="tab" onclick="switchTab('report')">鑑識報告</button>
+  </div>
+</div>
 
-  <!-- 統計卡片 -->
-  <div class="stats-grid">
+<!-- ══ DASHBOARD ══ -->
+<div class="panel active" id="tab-dashboard">
+
+  <div class="stat-grid">
     <div class="stat-card">
-      <div class="label">監控惡意域名數</div>
-      <div class="value">36 個</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">3/7 Costco污染頁面總數</div>
-      <div class="value">5,048,800</div>
-    </div>
-    <div class="stat-card red">
-      <div class="label">3/9 Costco污染頁面總數</div>
-      <div class="value">4,305,800</div>
-    </div>
-    <div class="stat-card green">
-      <div class="label">2天內變化</div>
-      <div class="value">-743,000</div>
+      <div class="stat-label">惡意域名總數</div>
+      <div class="stat-value red">87</div>
+      <div class="stat-sub">批次 2026-03-22～29</div>
     </div>
     <div class="stat-card">
-      <div class="label">域名建立日期</div>
-      <div class="value">2026/3/2–3/4</div>
+      <div class="stat-label">Google索引頁面</div>
+      <div class="stat-value amber">14,776,300</div>
+      <div class="stat-sub">87個域名合計</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">涉及TLD種類</div>
+      <div class="stat-value blue">26</div>
+      <div class="stat-sub">.cards .garden .cam +更多</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Registrar</div>
+      <div class="stat-value green">3</div>
+      <div class="stat-sub">Spaceship / Sav.com / Dynadot</div>
     </div>
   </div>
 
-  <!-- 截圖說明框 -->
-  <div class="evidence-box">
-    <h3>📸 實證截圖說明｜cwmqzu.courses 搜尋「costco」結果（2026-03-09 09:15）</h3>
-    <p>▶ 搜尋指令：<code>site:cwmqzu.courses costco</code></p>
-    <p>▶ 結果頁面標題出現：「<strong>好市多惠而浦微波爐評價</strong>」、「<strong>加賀屋行李箱 好市多Costco30吋行李箱2749元</strong>」、「<strong>好市多簡易接單流程</strong>」</p>
-    <p>▶ 此為典型SEO寄生攻擊：惡意域名在頁面植入大量「好市多」「Costco」等關鍵字，劫持消費者搜尋流量，
-    導向釣魚頁面或詐騙內容。</p>
-    <p>▶ 36個惡意域名均於 <strong>2026年3月2日至4日</strong> 集中註冊（Spaceship / Dynadot / GoDaddy），
-    共用相同廣告帳號 <span class="highlight">AdSense pub-2647689032095179</span>，指向同一行為人。</p>
-  </div>
-
-  <!-- 資料表格 -->
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>惡意域名</th>
-          <th>建立時間(TW)</th>
-          <th>域名商</th>
-          <th>污染頁數(3/7)</th>
-          <th>污染頁數(3/9)</th>
-          <th>2天變化</th>
-          <th>Costco SEO污染搜尋連結</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="num">1</td>
-          <td class="domain">uahxxl.company</td>
-          <td>2026-03-02 00:00</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">157,000</td>
-          <td class="num" style="background:#e8f5e9">130,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -27,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:uahxxl.company+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">2</td>
-          <td class="domain">gxphnt.buzz</td>
-          <td>2026-03-02 11:14:17</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">26,300</td>
-          <td class="num" style="background:#e8f5e9">22,300</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -4,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:gxphnt.buzz+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">3</td>
-          <td class="domain">expmgc.pics</td>
-          <td>2026-03-02 11:14:18</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">21,900</td>
-          <td class="num" style="background:#e8f5e9">17,300</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -4,600</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:expmgc.pics+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">4</td>
-          <td class="domain">fvcjvi.makeup</td>
-          <td>2026-03-02 11:14:18</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">43,000</td>
-          <td class="num" style="background:#e8f5e9">31,900</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -11,100</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:fvcjvi.makeup+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">5</td>
-          <td class="domain">gtbzno.bond</td>
-          <td>2026-03-02 11:14:18</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">37,700</td>
-          <td class="num" style="background:#e8f5e9">27,500</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -10,200</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:gtbzno.bond+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">6</td>
-          <td class="domain">hosbwq.beauty</td>
-          <td>2026-03-02 11:14:18</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">40,700</td>
-          <td class="num" style="background:#e8f5e9">32,700</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -8,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:hosbwq.beauty+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">7</td>
-          <td class="domain">svydoh.cyou</td>
-          <td>2026-03-02 11:14:18</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">45,200</td>
-          <td class="num" style="background:#e8f5e9">36,500</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -8,700</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:svydoh.cyou+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">8</td>
-          <td class="domain">uatvnx.boats</td>
-          <td>2026-03-02 11:14:18</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">43,000</td>
-          <td class="num" style="background:#e8f5e9">34,300</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -8,700</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:uatvnx.boats+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">9</td>
-          <td class="domain">enadvd.qpon</td>
-          <td>2026-03-02 12:41:12</td>
-          <td>Dynadot LLC</td>
-          <td class="num">140,000</td>
-          <td class="num" style="background:#e8f5e9">119,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -21,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:enadvd.qpon+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">10</td>
-          <td class="domain">pnlenm.horse</td>
-          <td>2026-03-02 12:41:12</td>
-          <td>DYNADOT LLC</td>
-          <td class="num">166,000</td>
-          <td class="num" style="background:#e8f5e9">155,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -11,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:pnlenm.horse+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">11</td>
-          <td class="domain">tjrwua.best</td>
-          <td>2026-03-02 12:41:12</td>
-          <td>Dynadot LLC</td>
-          <td class="num">162,000</td>
-          <td class="num" style="background:#e8f5e9">146,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -16,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:tjrwua.best+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">12</td>
-          <td class="domain">pacuav.cards</td>
-          <td>2026-03-02 12:42:04</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">139,000</td>
-          <td class="num" style="background:#e8f5e9">110,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -29,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:pacuav.cards+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">13</td>
-          <td class="domain">furmxd.cafe</td>
-          <td>2026-03-02 12:42:05</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">157,000</td>
-          <td class="num" style="background:#e8f5e9">130,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -27,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:furmxd.cafe+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">14</td>
-          <td class="domain">ufzgce.republican</td>
-          <td>2026-03-02 12:42:05</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">157,000</td>
-          <td class="num" style="background:#e8f5e9">123,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -34,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:ufzgce.republican+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">15</td>
-          <td class="domain">mvjfmi.guru</td>
-          <td>2026-03-02 12:42:06</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">157,000</td>
-          <td class="num" style="background:#e8f5e9">139,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -18,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:mvjfmi.guru+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">16</td>
-          <td class="domain">ynwahh.digital</td>
-          <td>2026-03-02 12:42:07</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">162,000</td>
-          <td class="num" style="background:#e8f5e9">137,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -25,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:ynwahh.digital+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">17</td>
-          <td class="domain">cxkdvs.link</td>
-          <td>2026-03-02 12:43:15</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">152,000</td>
-          <td class="num" style="background:#e8f5e9">127,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -25,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:cxkdvs.link+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">18</td>
-          <td class="domain">ubcyao.tattoo</td>
-          <td>2026-03-02 12:43:15</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">132,000</td>
-          <td class="num" style="background:#e8f5e9">112,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -20,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:ubcyao.tattoo+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">19</td>
-          <td class="domain">vzphnx.run</td>
-          <td>2026-03-02 12:43:15</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">152,000</td>
-          <td class="num" style="background:#e8f5e9">126,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -26,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:vzphnx.run+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">20</td>
-          <td class="domain">cwmqzu.courses</td>
-          <td>2026-03-02 12:43:16</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">158,000</td>
-          <td class="num" style="background:#e8f5e9">128,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -30,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:cwmqzu.courses+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">21</td>
-          <td class="domain">fbiavv.cc</td>
-          <td>2026-03-02 12:43:16</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">129,000</td>
-          <td class="num" style="background:#e8f5e9">88,300</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -40,700</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:fbiavv.cc+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">22</td>
-          <td class="domain">gqbicp.study</td>
-          <td>2026-03-02 12:43:16</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">147,000</td>
-          <td class="num" style="background:#e8f5e9">115,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -32,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:gqbicp.study+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">23</td>
-          <td class="domain">wyeyrt.asia</td>
-          <td>2026-03-02 12:43:16</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">142,000</td>
-          <td class="num" style="background:#e8f5e9">114,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -28,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:wyeyrt.asia+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">24</td>
-          <td class="domain">xdbthq.date</td>
-          <td>2026-03-02 12:43:16</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">153,000</td>
-          <td class="num" style="background:#e8f5e9">151,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -2,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:xdbthq.date+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">25</td>
-          <td class="domain">tprumc.garden</td>
-          <td>2026-03-02 12:43:20</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">149,000</td>
-          <td class="num" style="background:#e8f5e9">120,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -29,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:tprumc.garden+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">26</td>
-          <td class="domain">hggscp.bar</td>
-          <td>2026-03-02 12:43:46</td>
-          <td>GoDaddy</td>
-          <td class="num">149,000</td>
-          <td class="num" style="background:#e8f5e9">127,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -22,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:hggscp.bar+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">27</td>
-          <td class="domain">ojiykt.shop</td>
-          <td>2026-03-04 00:00</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">191,000</td>
-          <td class="num" style="background:#e8f5e9">131,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -60,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:ojiykt.shop+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">28</td>
-          <td class="domain">tgszsg.beer</td>
-          <td>2026-03-04 19:15:58</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">194,000</td>
-          <td class="num" style="background:#e8f5e9">179,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -15,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:tgszsg.beer+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">29</td>
-          <td class="domain">zdqjec.wtf</td>
-          <td>2026-03-04 19:15:58</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">193,000</td>
-          <td class="num" style="background:#e8f5e9">173,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -20,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:zdqjec.wtf+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">30</td>
-          <td class="domain">fszdik.gay</td>
-          <td>2026-03-04 19:15:59</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">203,000</td>
-          <td class="num" style="background:#e8f5e9">147,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -56,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:fszdik.gay+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">31</td>
-          <td class="domain">xiploh.courses</td>
-          <td>2026-03-04 19:15:59</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">197,000</td>
-          <td class="num" style="background:#e8f5e9">171,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -26,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:xiploh.courses+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">32</td>
-          <td class="domain">puenko.boutique</td>
-          <td>2026-03-04 19:16:04</td>
-          <td>Spaceship, Inc.</td>
-          <td class="num">195,000</td>
-          <td class="num" style="background:#e8f5e9">164,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -31,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:puenko.boutique+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">33</td>
-          <td class="domain">uitrsh.reviews</td>
-          <td>2026-03-04 19:17:26</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">188,000</td>
-          <td class="num" style="background:#e8f5e9">176,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -12,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:uitrsh.reviews+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">34</td>
-          <td class="domain">ukxlwb.dog</td>
-          <td>2026-03-04 19:17:26</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">196,000</td>
-          <td class="num" style="background:#e8f5e9">193,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -3,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:ukxlwb.dog+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">35</td>
-          <td class="domain">ntwpye.sale</td>
-          <td>2026-03-04 19:17:40</td>
-          <td>Sav.com, LLC</td>
-          <td class="num">185,000</td>
-          <td class="num" style="background:#e8f5e9">181,000</td>
-          <td class="diff" style="color:#1a5e20;background:#e8f5e9">▼ -4,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:ntwpye.sale+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-        <tr>
-          <td class="num">36</td>
-          <td class="domain">gakhcf.horse</td>
-          <td>2026-03-04 19:17:45</td>
-          <td>DYNADOT LLC</td>
-          <td class="num">189,000</td>
-          <td class="num" style="background:#fff0f0">191,000</td>
-          <td class="diff" style="color:#b71c1c;background:#fff0f0">▲ +2,000</td>
-          <td class="link"><a href="https://www.google.com/search?q=site:gakhcf.horse+costco" target="_blank" rel="nofollow">🔗 驗證</a></td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="4" style="text-align:right">36個域名總計</td>
-          <td class="num">5,048,800</td>
-          <td class="num">4,305,800</td>
-          <td class="num">-743,000（-14.7%）</td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-
-  <!-- 分析說明 -->
-  <div class="analysis">
-    <h2>📌 分析說明</h2>
-    <ul>
-      <li><strong>SEO寄生攻擊（Parasite SEO）</strong>：惡意域名在頁面大量植入「Costco」「好市多」等高搜尋量關鍵字，
-      藉此出現在Google搜尋結果，劫持消費者流量導向釣魚或詐騙頁面。</li>
-      <li><strong>集中建立時間</strong>：36個域名均於 2026年3月2日–4日 批量建立，為典型自動化攻擊特徵。</li>
-      <li><strong>共用廣告帳號</strong>：所有域名使用相同 AdSense pub-2647689032095179 及 GTM-TRLQMPKX，
-      鑑識確認為<span class="highlight">同一行為人</span>操作。</li>
-      <li><strong>3/7→3/9 頁數下降 -743,000（-14.7%）</strong>：推測Google已啟動部分清除，
-      但仍有 <strong>4,305,800 頁</strong> 殘留，對Costco品牌威脅持續存在。</li>
-      <li><strong>犯罪事實</strong>：行為人已於司法文書中確認身分，
-      另涉兒少剝削性影像案地檢署偵辦中）。</li>
-    </ul>
-  </div>
-
-  <!-- 頁尾 -->
-  <div class="footer">
-    本報告由 翡翠網路資訊解決方案（Jade-Ans Internet Information Solutions）製作｜
-    公開報告：<a href="https://seo-report-2021.netlify.app/" target="_blank">seo-report-2021.netlify.app</a>｜
-    2026年3月9日
+  <!-- 批次時序 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">批次註冊時序</span>
+      <span class="section-count">5個批次</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-group">
+        <div class="tl-date">2026-03-22 17:37～17:38（第1批，9個域名）</div>
+        <div class="tl-dots" id="tl1"></div>
+      </div>
+      <div class="tl-group">
+        <div class="tl-date">2026-03-23 16:38～16:39（第2批，24個域名）</div>
+        <div class="tl-dots" id="tl2"></div>
+      </div>
+      <div class="tl-group">
+        <div class="tl-date">2026-03-24 20:13～20:14（第3批，13個域名）</div>
+        <div class="tl-dots" id="tl3"></div>
+      </div>
+      <div class="tl-group">
+        <div class="tl-date">2026-03-25 19:27～19:28（第4批，9個域名）</div>
+        <div class="tl-dots" id="tl4"></div>
+      </div>
+      <div class="tl-group">
+        <div class="tl-date">2026-03-27 01:40～18:42（第5批，32個域名）</div>
+        <div class="tl-dots" id="tl5"></div>
+      </div>
+    </div>
   </div>
 
 </div>
+
+<!-- ══ DOMAINS ══ -->
+<div class="panel" id="tab-domains">
+
+  <div class="controls">
+    <input class="search" id="search" type="text" placeholder="搜尋域名或TLD..." oninput="filterTable()">
+    <button class="filter-btn active" onclick="filterKW('all', this)">全部</button>
+    <button class="filter-btn" onclick="filterKW('costco', this)">costco</button>
+    <button class="filter-btn" onclick="filterKW('中油', this)">中油</button>
+    <button class="filter-btn" onclick="filterKW('國中', this)">國中</button>
+    <button class="filter-btn" onclick="filterKW('英明國中', this)">英明國中</button>
+    <button class="filter-btn" onclick="filterKW('英明國中他在動', this)">英明國中他在動</button>
+    <div class="spacer"></div>
+    <span class="sort-info" id="sort-info">顯示 87 筆 ｜ 合計 14,776,300 頁</span>
+  </div>
+
+  <div class="section">
+    <div class="tbl-wrap">
+      <table id="domain-table">
+        <thead>
+          <tr>
+            <th style="width:44px">No.</th>
+            <th onclick="sortTable(1)" style="cursor:pointer">域名 ↕</th>
+            <th>TLD</th>
+            <th onclick="sortTable(3)" style="cursor:pointer">TW註冊時間 ↕</th>
+            <th style="width:160px">Registrar</th>
+            <th class="r" onclick="sortTable(5)" style="cursor:pointer;min-width:100px;white-space:nowrap;">Webpages ↕</th>
+          </tr>
+        </thead>
+        <tbody id="domain-tbody"></tbody>
+        <tfoot>
+          <tr class="tbl-total">
+            <td colspan="6" style="text-align:right; font-size:12px;">合計 87 域名</td>
+            <td style="text-align:right">14,776,300</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ REPORT ══ -->
+<div class="panel" id="tab-report">
+
+  <div class="report-header">
+    <div class="report-badge">機密 ｜ 司法程序使用</div>
+    <div class="report-title">SEO污染攻擊技術鑑識報告</div>
+    <div class="report-sub">Monetag付款帳號同一性分析暨攻擊動機脈絡</div>
+    <div class="report-meta">
+      <div class="meta-item"><div class="meta-label">搜證日期</div><div class="meta-value">2026-03-28</div></div>
+      <div class="meta-item"><div class="meta-label">製作單位</div><div class="meta-value">Jade-Ans Internet Information Solutions</div></div>
+      <div class="meta-item"><div class="meta-label">相關案件</div><div class="meta-value">新北地檢署111年度偵字第8075號</div></div>
+      <div class="meta-item"><div class="meta-label">嫌疑人</div><div class="meta-value">嫌疑人JX（Delta Electronics）</div></div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-hdr">
+      <div class="finding-num red">1</div>
+      <div class="finding-title">Monetag SmartLink 付款帳號同一性 ── 三重技術指紋</div>
+    </div>
+    <div class="finding-body">
+      <p>本案兩個轉址核心域名使用完全相同的 <span class="highlight">key 值</span>，確認為同一 Monetag 付款帳號。key 值為平台分配給每位發布商的唯一帳號識別碼，與付款帳戶直接綁定，不隨時間、域名或 SmartLink 數量而改變。</p>
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <div class="evidence-label">chronicairliner.com（2026/2/26）</div>
+          <div class="evidence-value amber">key=6b147b6d3f3b8cd0bbd3191b3b1a8394</div>
+          <div class="evidence-value" style="margin-top:4px;font-size:11px;color:var(--text3)">hash=16b8 ｜ ENOM, INC.</div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-label">architectureimpolitesacred.com（2026/3/12）</div>
+          <div class="evidence-value amber">key=6b147b6d3f3b8cd0bbd3191b3b1a8394</div>
+          <div class="evidence-value" style="margin-top:4px;font-size:11px;color:var(--text3)">hash=98fb ｜ ENOM, INC.</div>
+        </div>
+      </div>
+      <p style="margin-top:12px;">admpid（Monetag Publisher ID）連號特徵：<span class="highlight2">421815～421829，差值僅14</span>，確認同一操作者在極短時間內自動化批次申請帳號。tw子域編號跨域名重複出現，確認同一系統統一管理。</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-hdr">
+      <div class="finding-num amber">2</div>
+      <div class="finding-title">hdsryc.surf 原始碼直接確認 Monetag 平台</div>
+    </div>
+    <div class="finding-body">
+      <p>Monetag 平台識別非推論，係直接從 hdsryc.surf 頁面原始碼讀取：</p>
+      <div class="code">&lt;script src="https://hdsryc.surf/adManager.js" data-admpid="421819" crossorigin="anonymous"&gt;</div>
+      <div class="code">let goodLink = 'https://chronicairliner.com/uc6w0rekrs?key=6b147b6d3f3b8cd0bbd3191b3b1a8394&hash=16b8';</div>
+      <p><span class="highlight3">adManager.js</span> 為 Monetag 平台專屬腳本；<span class="highlight3">data-admpid</span> 為 Monetag 專屬參數命名；goodLink 直接指向 Monetag SmartLink 服務端。</p>
+      <p>CSS指紋：<span class="highlight2">filter:hue-rotate(4deg)</span> 在本案230+個惡意域名中完全一致，為同一代碼庫的決定性鑑識標誌。</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-hdr">
+      <div class="finding-num">3</div>
+      <div class="finding-title">本批次55個域名 ── 四批自動化批次部署</div>
+    </div>
+    <div class="finding-body">
+      <p>本批次87個惡意域名於2026-03-22至2026-03-29間分批次自動化部署，Google索引頁面合計 <span class="highlight">14,776,300頁</span>。</p>
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <div class="evidence-label">第1批 ｜ 2026-03-22 17:37-38</div>
+          <div class="evidence-value">9個域名 ｜ Sav.com + Spaceship</div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-label">第2批 ｜ 2026-03-23 16:38-39</div>
+          <div class="evidence-value">24個域名 ｜ 集中於16:38（同秒多域名）</div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-label">第3批 ｜ 2026-03-24 20:13-14</div>
+          <div class="evidence-value">13個域名 ｜ Sav.com + Spaceship</div>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-label">第4批 ｜ 2026-03-25 19:27-28</div>
+          <div class="evidence-value">9個域名 ｜ Sav.com（19:27批次）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-hdr">
+      <div class="finding-num red">4</div>
+      <div class="finding-title">攻擊目標動機脈絡 ── 犯意延續性</div>
+    </div>
+    <div class="finding-body">
+      <p><strong style="color:var(--text)">被害人宗教人士L：</strong>壹週刊毀謗事件受害者。111年度偵字第8075號確立嫌疑人JX對其存在持續性攻擊意圖（張貼涉妨害風化圖文，意圖毀謗，不起訴處分）。本案SEO污染以其為搜尋關鍵字，為手法升級後之延續行為，<span class="highlight">犯意一貫</span>。</p>
+      <p><strong style="color:var(--text)">英明國中：</strong>性影像事件（發生逾10年）目前仍在檢察官及社會局偵辦中。嫌疑人JX刻意選擇此<span class="highlight2">正在偵辦中的敏感議題</span>作為SEO誘餌，寄生司法案件製造搜尋流量，可能加重對相關受害人之二次傷害。</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-hdr">
+      <div class="finding-num">5</div>
+      <div class="finding-title">嫌疑人JX為直接收益者之技術推論（99%）</div>
+    </div>
+    <div class="finding-body">
+      <p style="font-size:14px;color:var(--text2);margin-bottom:16px;">五重證據支持嫌疑人JX為Monetag帳號直接持有人及付款受益者：</p>
+      <div style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(0,0,0,.12);border-radius:8px;overflow:hidden;margin-bottom:18px;">
+        <div style="display:grid;grid-template-columns:56px 1fr;align-items:stretch;border-bottom:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.5);">
+          <div style="display:flex;align-items:center;justify-content:center;background:rgba(26,111,255,.1);font-family:var(--mono);font-weight:700;color:var(--accent);font-size:22px;padding:14px 0;">①</div>
+          <div style="padding:14px 16px;font-size:16px;color:var(--text);line-height:1.5;">admpid差值14，<span style="color:#888;">排除多人各自申請</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:56px 1fr;align-items:stretch;border-bottom:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.3);">
+          <div style="display:flex;align-items:center;justify-content:center;background:rgba(26,111,255,.1);font-family:var(--mono);font-weight:700;color:var(--accent);font-size:22px;padding:14px 0;">②</div>
+          <div style="padding:14px 16px;font-size:16px;color:var(--text);line-height:1.5;">key值跨時間穩定，<span style="color:#888;">排除轉包代理</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:56px 1fr;align-items:stretch;border-bottom:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.5);">
+          <div style="display:flex;align-items:center;justify-content:center;background:rgba(26,111,255,.1);font-family:var(--mono);font-weight:700;color:var(--accent);font-size:22px;padding:14px 0;">③</div>
+          <div style="padding:14px 16px;font-size:16px;color:var(--text);line-height:1.5;">批次註冊時間落在台灣上班時間 <strong>08:30–17:30</strong>，<span style="color:#888;">Delta Electronics Neihu標準工時</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:56px 1fr;align-items:stretch;border-bottom:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.3);">
+          <div style="display:flex;align-items:center;justify-content:center;background:rgba(26,111,255,.1);font-family:var(--mono);font-weight:700;color:var(--accent);font-size:22px;padding:14px 0;">④</div>
+          <div style="padding:14px 16px;font-size:16px;color:var(--text);line-height:1.5;">前案動機延續，<span style="color:#888;">受雇者不會延續個人恩怨</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:56px 1fr;align-items:stretch;background:rgba(255,255,255,.5);">
+          <div style="display:flex;align-items:center;justify-content:center;background:rgba(26,111,255,.1);font-family:var(--mono);font-weight:700;color:var(--accent);font-size:22px;padding:14px 0;">⑤</div>
+          <div style="padding:14px 16px;font-size:16px;color:var(--text);line-height:1.5;">換域不換帳號，<span style="color:#888;">若為受雇雇主應會要求更換</span></div>
+        </div>
+      </div>
+      <div style="background:rgba(26,111,255,.07);border:1px solid rgba(26,111,255,.2);border-radius:6px;padding:12px 16px;">
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);font-weight:600;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase;">司法建議</div>
+        <div style="font-size:14px;color:var(--text);line-height:1.7;">向Monetag調取：<code style="background:rgba(0,0,0,.08);padding:1px 6px;border-radius:3px;font-family:var(--mono);font-size:12px;">key=6b147b6d...</code> 帳號持有人KYC資料、綁定PayPal/Payoneer帳號、帳號申請IP及裝置資訊。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">鑑識結論</div>
+    <div class="verdict-text">無論嫌疑人JX於何時、以何種設備執行本案攻擊行為，其以合法工具（域名註冊、廣告平台、搜尋引擎索引）組建犯罪基礎設施，持續對特定被害人及社會公益造成損害，均不因工具之合法性而豁免刑事責任。結合111年度偵字第8075號所確立之攻擊意圖前案記錄，本案構成<strong>犯意一貫之延續性犯罪</strong>，且已升級至散布惡意程式（sendmetr.com，Avast偵測：Script:SNH-gen [Trj]，2026-03-27）之程度，應依法從重追訴。</div>
+  </div>
+
+</div>
+
+<script>
+const DOMAINS = [
+  [1,"xycbcs.cards",".cards","2026-03-22 17:37:07","",106000,"英明國中他在動密碼"],
+  [2,"pdaeui.info",".info","2026-03-22 17:37:43","",132000,"英明國中他在動密碼"],
+  [3,"djqxds.boutique",".boutique","2026-03-22 17:37:55","",104000,"英明國中他在動密碼"],
+  [4,"ysacig.boutique",".boutique","2026-03-22 17:37:55","",108000,"英明國中他在動密碼"],
+  [5,"jxxgpm.cam",".cam","2026-03-22 17:37:55","Spaceship, Inc.",121000,"英明國中他在動"],
+  [6,"qhfzkf.cam",".cam","2026-03-22 17:37:55","Spaceship, Inc.",110000,"英明國中他在動"],
+  [7,"qfppps.garden",".garden","2026-03-22 17:37:59","Spaceship, Inc.",103000,"英明國中他在動密碼"],
+  [8,"rhtyav.beer",".beer","2026-03-22 17:38:00","Spaceship, Inc.",109000,"英明國中他在動"],
+  [9,"drwwep.bar",".bar","2026-03-22 17:38:03","GoDaddy",115000,"英明國中他在動"],
+  [10,"fztszu.garden",".garden","2026-03-23 16:38:00","Spaceship, Inc.",193000,"英明國中他在動密碼"],
+  [11,"srtrhj.garden",".garden","2026-03-23 16:38:00","Spaceship, Inc.",202000,"英明國中他在動密碼"],
+  [12,"sdrcgo.study",".study","2026-03-23 16:38:00","Spaceship, Inc.",188000,"英明國中他在動密碼"],
+  [13,"wknqwd.study",".study","2026-03-23 16:38:00","Spaceship, Inc.",193000,"英明國中他在動密碼"],
+  [14,"lnczma.today",".today","2026-03-23 16:38:31","",211000,"英明國中他在動密碼"],
+  [15,"jqjqud.today",".today","2026-03-23 16:38:36","",198000,"英明國中他在動密碼"],
+  [16,"xewudy.watch",".watch","2026-03-23 16:38:38","",193000,"英明國中他在動密碼"],
+  [17,"yngcmj.beer",".beer","2026-03-23 16:38:40","Spaceship, Inc.",172000,"英明國中他在動"],
+  [18,"lncwoi.casa",".casa","2026-03-23 16:38:40","Spaceship, Inc.",117000,"英明國中他在動密碼"],
+  [19,"zamayt.cc",".cc","2026-03-23 16:38:40","Spaceship, Inc.",175000,"英明國中他在動"],
+  [20,"pbtfon.cam",".cam","2026-03-23 16:38:42","Spaceship, Inc.",210000,"英明國中他在動"],
+  [21,"sqkuwp.cam",".cam","2026-03-23 16:38:42","Spaceship, Inc.",209000,"英明國中他在動"],
+  [22,"tyyeyy.casa",".casa","2026-03-23 16:38:43","Spaceship, Inc.",127000,"英明國中他在動密碼"],
+  [23,"hntfap.tattoo",".tattoo","2026-03-23 16:38:43","Spaceship, Inc.",171000,"英明國中他在動密碼"],
+  [24,"kledwk.surf",".surf","2026-03-23 16:38:44","Spaceship, Inc.",158000,"英明國中他在動密碼"],
+  [25,"jluupn.boutique",".boutique","2026-03-23 16:38:45","",178000,"英明國中他在動密碼"],
+  [26,"vhwuaq.boutique",".boutique","2026-03-23 16:38:45","",189000,"英明國中他在動密碼"],
+  [27,"fghyqj.beer",".beer","2026-03-23 16:38:46","Spaceship, Inc.",176000,"英明國中他在動"],
+  [28,"rsnidk.onl",".onl","2026-03-23 16:38:46","",186000,"英明國中他在動密碼"],
+  [29,"wzuiwa.onl",".onl","2026-03-23 16:38:46","",188000,"英明國中他在動密碼"],
+  [30,"juktbm.surf",".surf","2026-03-23 16:38:46","Spaceship, Inc.",148000,"英明國中他在動密碼"],
+  [31,"confad.tattoo",".tattoo","2026-03-23 16:38:47","Spaceship, Inc.",165000,"英明國中他在動密碼"],
+  [32,"jcnilq.bar",".bar","2026-03-23 16:39:01","GoDaddy",184000,"英明國中他在動密碼"],
+  [33,"rbtoba.xyz",".xyz","2026-03-23 16:39:07","Go Daddy, LLC",189000,"英明國中他在動密碼"],
+  [34,"dzpbun.cards",".cards","2026-03-24 20:13:24","",202000,"英明國中他在動密碼"],
+  [35,"oohceb.cards",".cards","2026-03-24 20:13:32","",175000,"英明國中他在動密碼"],
+  [36,"cqukmm.onl",".onl","2026-03-24 20:13:34","",197000,"英明國中他在動密碼"],
+  [37,"fgpbxm.watch",".watch","2026-03-24 20:13:39","",223000,"英明國中他在動密碼"],
+  [38,"sjixvf.info",".info","2026-03-24 20:13:40","",246000,"英明國中他在動密碼"],
+  [39,"eertgh.today",".today","2026-03-24 20:13:42","",207000,"盧勝彥dcard"],
+  [40,"iviiiz.watch",".watch","2026-03-24 20:13:43","",225000,"英明國中他在動密碼"],
+  [41,"yhclra.vu",".vu","2026-03-24 20:13:44","Sav.com LLC",180000,"盧勝彥dcard"],
+  [42,"dpvekj.garden",".garden","2026-03-24 20:14:00","Spaceship, Inc.",200000,"英明國中他在動密碼"],
+  [43,"hoqbhj.cam",".cam","2026-03-24 20:14:02","Spaceship, Inc.",209000,"英明國中他在動"],
+  [44,"yklvrb.cam",".cam","2026-03-24 20:14:02","Spaceship, Inc.",227000,"英明國中他在動"],
+  [45,"maxrmn.casa",".casa","2026-03-24 20:14:02","Spaceship, Inc.",188000,"英明國中他在動"],
+  [46,"qdbpvd.tattoo",".tattoo","2026-03-24 20:14:02","Spaceship, Inc.",92100,"英明國中他在動"],
+  [47,"ilrxvr.garden",".garden","2026-03-25 19:28:00","Spaceship, Inc.",198000,"英明國中他在動密碼"],
+  [48,"pzhnit.garden",".garden","2026-03-25 19:28:00","Spaceship, Inc.",206000,"英明國中他在動密碼"],
+  [49,"cgwmmx.study",".study","2026/3/25 19:28","Spaceship, Inc.",200000,"英明國中他在動密碼"],
+  [50,"suzzat.study",".study","2026/3/25 19:28","Spaceship, Inc.",200000,"英明國中他在動密碼"],
+  [51,"mgrcfb.cards",".cards","2026-03-25 19:27:27","",181000,"英明國中他在動密碼"],
+  [52,"qqbahn.cards",".cards","2026-03-25 19:27:24","",187000,"英明國中他在動密碼"],
+  [53,"bswewk.company",".company","2026-03-25 19:27:28","",229000,"英明國中他在動密碼"],
+  [54,"rhpmij.company",".company","2026-03-25 19:27:28","",221000,"英明國中他在動密碼"],
+  [55,"uqhvkt.watch",".watch","2026-03-25 19:27:42","",224000,"英明國中他在動密碼"],
+  [56,"acxkjp.art",".art","2026/3/25 19:27","Sav.com, LLC",191000,"英明國中他在動密碼"],
+  [57,"dsmabm.art",".art","2026/3/27 18:41","Sav.com, LLC",129000,"英明國中他在動密碼"],
+  [58,"hrxoda.art",".art","2026/3/27 01:40","Sav.com, LLC",164000,"英明國中他在動密碼"],
+  [59,"izgxpd.art",".art","2026/3/27 01:40","Sav.com, LLC",162000,"英明國中他在動密碼"],
+  [60,"lqqmlp.art",".art","2026/3/25 19:27","Sav.com, LLC",211000,"英明國中他在動密碼"],
+  [61,"bkmwbf.beer",".beer","2026/3/25 19:28","Spaceship, Inc.",217000,"英明國中他在動"],
+  [62,"vxxpyz.beer",".beer","2026/3/27 18:41","Spaceship, Inc.",139000,"英明國中他在動"],
+  [63,"dhmhwd.casa",".casa","2026/3/27 18:41","Spaceship, Inc.",121000,"英明國中他在動密碼"],
+  [64,"hwwvpx.casa",".casa","2026/3/27 01:41","Spaceship, Inc.",164000,"英明國中他在動密碼"],
+  [65,"pyfpqh.casa",".casa","2026/3/27 18:41","Spaceship, Inc.",124000,"英明國中他在動密碼"],
+  [66,"tqbksu.casa",".casa","2026/3/25 19:28","Spaceship, Inc.",205000,"英明國中他在動密碼"],
+  [67,"tktumz.cc",".cc","2026/3/27 01:41","Spaceship, Inc.",161000,"盧勝彥dcard"],
+  [68,"afqsiz.pw",".pw","2026/3/27 18:42","GoDaddy.com, LLC",135000,"英明國中他在動密碼"],
+  [69,"sncebo.pw",".pw","2026/3/27 01:41","GoDaddy.com, LLC",164000,"英明國中他在動密碼"],
+  [70,"ujwsum.pw",".pw","2026/3/25 19:28","GoDaddy.com, LLC",193000,"英明國中他在動密碼"],
+  [71,"wnefyp.pw",".pw","2026/3/25 19:28","GoDaddy.com, LLC",209000,"英明國中他在動密碼"],
+  [72,"cqpzsh.qpon",".qpon","2026/3/25 19:27","Dynadot LLC",197000,"盧勝彥dcard"],
+  [73,"ngplyn.qpon",".qpon","2026/3/27 18:41","Dynadot LLC",87400,"盧勝彥dcard"],
+  [74,"nwxnjd.qpon",".qpon","2026/3/27 01:41","Dynadot LLC",145000,"盧勝彥dcard"],
+  [75,"sgnegj.qpon",".qpon","2026/3/27 18:41","Dynadot LLC",88800,"盧勝彥dcard"],
+  [76,"vlqpww.qpon",".qpon","2026/3/25 19:27","Dynadot LLC",193000,"盧勝彥dcard"],
+  [77,"iucowl.study",".study","2026/3/27 01:41","Spaceship, Inc.",157000,"英明國中他在動密碼"],
+  [78,"qmliyw.study",".study","2026/3/27 18:41","Spaceship, Inc.",139000,"英明國中他在動密碼"],
+  [79,"mjekfj.xyz",".xyz","2026/3/27 01:41","Go Daddy, LLC",144000,"英明國中他在動密碼"],
+  [80,"nrxena.xyz",".xyz","2026/3/25 19:28","Go Daddy, LLC",170000,"英明國中他在動密碼"],
+  [81,"rdwyev.xyz",".xyz","2026/3/27 01:41","Go Daddy, LLC",115000,"英明國中他在動密碼"],
+  [82,"vtjcbc.xyz",".xyz","2026/3/27 18:42","Go Daddy, LLC",130000,"英明國中他在動密碼"],
+  [83,"zaaiid.xyz",".xyz","2026/3/27 18:42","Go Daddy, LLC",101000,"英明國中他在動密碼"],
+  [84,"qpyroi.study",".study","2026/3/27 01:41","Spaceship, Inc.",161000,"英明國中他在動密碼"],
+  [85,"vojbta.casa",".casa","2026/3/25 19:28","Spaceship, Inc.",195000,"英明國中他在動密碼"],
+  [86,"wtuesu.beer",".beer","2026/3/25 19:28","Spaceship, Inc.",201000,"英明國中他在動"],
+  [87,"yricum.art",".art","2026/3/27 18:41","Sav.com, LLC",118000,"英明國中他在動密碼"]
+];
+
+let currentFilter = 'all';
+let sortCol = -1, sortAsc = true;
+
+function tldClass(tld) {
+  const map = {'.cards':'cards','.garden':'garden','.cam':'cam','.study':'study',
+    '.watch':'watch','.boutique':'boutique','.today':'today','.beer':'beer',
+    '.onl':'onl','.tattoo':'tattoo','.casa':'casa','.info':'info',
+    '.bar':'bar','.surf':'surf','.company':'company'};
+  return 'tld-badge tld-' + (map[tld] || 'other');
+}
+
+function wpClass(v) {
+  if (v >= 220000) return 'td-wp hi';
+  if (v >= 180000) return 'td-wp mid';
+  return 'td-wp lo';
+}
+
+function renderTable() {
+  const q = document.getElementById('search').value.toLowerCase();
+  let rows = DOMAINS.filter(r => {
+    const matchFilter = currentFilter === 'all' || (r[6]||'').includes(currentFilter);
+    const matchSearch = !q || r[1].includes(q) || r[2].includes(q);
+    return matchFilter && matchSearch;
+  });
+  if (sortCol >= 0) {
+    rows.sort((a,b) => {
+      let av = a[sortCol], bv = b[sortCol];
+      if (av == null) av = '';
+      if (bv == null) bv = '';
+      return sortAsc ? (av > bv ? 1 : -1) : (av < bv ? 1 : -1);
+    });
+  }
+  const total = rows.reduce((s,r) => s + (r[5]||0), 0);
+  document.getElementById('sort-info').textContent =
+    `顯示 ${rows.length} 筆 ｜ 合計 ${total.toLocaleString()} 頁`;
+  document.getElementById('domain-tbody').innerHTML = rows.map(r => `
+    <tr>
+      <td class="td-no">${r[0]}</td>
+      <td class="td-domain">${r[1]}</td>
+      <td><span class="${tldClass(r[2])}">${r[2]}</span></td>
+      <td class="td-tw">${r[3] || '—'}</td>
+      <td class="td-reg">${r[4]}</td>
+      <td class="${wpClass(r[5])}">${(r[5]||0).toLocaleString()}</td>
+      <td style="text-align:center">${(r[6]||'').split('|').map(kw => kw ? `<a href="https://www.google.com/search?q=${encodeURIComponent(kw+' site:'+r[1])}" target="_blank" style="display:inline-block;margin:2px;padding:2px 7px;background:var(--accent);color:#fff;border-radius:3px;font-size:10px;font-family:var(--mono);text-decoration:none">${kw}</a>` : '').join('')}</td>
+    </tr>`).join('');
+}
+
+function filterTable() { renderTable(); }
+
+function filterKW(kw, btn) {
+  currentFilter = kw;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable();
+}
+
+function sortTable(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = true; }
+  renderTable();
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// TLD Chart
+function buildTLDChart() {
+  const counts = {};
+  DOMAINS.forEach(r => { counts[r[2]] = (counts[r[2]]||0) + 1; });
+  const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]);
+  const max = sorted[0][1];
+  const colors = ['#1a6fff','#1db86a','#f0a500','#a07fff','#ff7070','#ff9060',
+                  '#00c8dc','#c8a050','#c060ff','#ff60c0','#50c896','#64b4ff',
+                  '#ffa032','#32c8ff','#ffc832','#909090','#ff80c0','#80d0ff'];
+  document.getElementById('tld-chart').innerHTML = sorted.map(([tld, cnt], i) => `
+    <div class="tld-item">
+      <div class="tld-bar-wrap">
+        <div class="tld-bar-fill" style="height:${Math.round(cnt/max*56)+4}px;background:${colors[i%colors.length]}"></div>
+      </div>
+      <div class="tld-item-name">${tld}</div>
+      <div class="tld-item-val">${cnt}</div>
+    </div>`).join('');
+}
+
+// Timeline
+function buildTimeline() {
+  const batches = {
+    tl1: r => r[3] && r[3].startsWith('2026-03-22'),
+    tl2: r => r[3] && r[3].startsWith('2026-03-23'),
+    tl3: r => r[3] && r[3].startsWith('2026-03-24'),
+    tl4: r => r[3] && r[3].startsWith('2026-03-25'),
+    tl5: r => r[3] && (r[3].startsWith('2026-03-27') || r[3].startsWith('2026-03-29')),
+  };
+  Object.entries(batches).forEach(([id, fn]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = DOMAINS.filter(fn).map(r =>
+      `<span class="tl-dot">${r[1]}</span>`).join('');
+  });
+}
+
+buildTimeline();
+renderTable();
+</script>
 </body>
 </html>
